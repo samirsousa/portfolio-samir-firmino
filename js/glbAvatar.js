@@ -9,8 +9,8 @@ export const MODEL_CONFIG = {
   height: 4,        // altura normalizada do modelo na cena
   neck: 0.73,       // altura do pescoço (0 = pés, 1 = topo da cabeça) — tudo acima disso gira com o mouse
   blend: 0.012,     // suavidade da "dobra" no pescoço (fração da altura)
-  showFrom: 0.20,   // enquadramento harmonioso: exibe cadeira, rodas, tronco e rosto com destaque
-  headroom: 0.10,   // espaço acima da cabeça (para o cabelo)
+  showFrom: 0.10,   // enquadramento harmonioso: exibe cadeira esportiva, rodas, tronco e rosto com destaque
+  headroom: 0.12,   // espaço acima da cabeça (para o cabelo)
   rotationY: 0,     // gire se o modelo vier de lado ou de costas (ex.: Math.PI)
   customize: customizeBoneco, // cores, cabelo e boca específicos deste modelo
 };
@@ -123,7 +123,7 @@ export async function loadGlbAvatar(cfg = MODEL_CONFIG) {
       const fitH = ((top - bottom) / 2) / half * 1.05;
       const fitW = (size.x * s / 2) / (half * aspect) * 1.15;
       const lookY = (top + bottom) / 2;
-      return { camY: lookY + 0.1, lookY, dist: Math.max(fitH, fitW) + pivot.z };
+      return { camY: lookY + 0.08, lookY, dist: (Math.max(fitH, fitW) + pivot.z) * 1.20 };
     },
     // Close-up de cabeça e ombros (seção "Sobre")
     close(aspect, fov) {

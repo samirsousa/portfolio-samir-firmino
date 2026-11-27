@@ -170,16 +170,20 @@ main { position: relative; z-index: 1; }
   animation: hint 1.6s ease-in-out infinite;
 }
 @keyframes hint { 50% { transform: translateY(9px); opacity: 0.3; } }
-/* Blocos ancorados no centro da tela, um de cada lado da cabeça do avatar.
-   A cabeça tem largura proporcional à altura da tela (≈ 50vh), por isso o vão usa vh. */
-.hero-left { right: calc(50% + 22vh); transform: translate(-25px, -62%); text-align: left; }
-.hero-right {
-  left: calc(50% + 20vh);
-  transform: translate(25px, -58%);
+/* Blocos ancorados no centro da tela, um de cada lado do avatar 3D.
+   Usa max(25vh, 14vw) para manter um vão seguro e proporcional ao avatar em qualquer resolução. */
+.hero-left {
+  right: calc(50% + max(25vh, 14vw));
+  transform: translate(-20px, -60%);
   text-align: left;
-  max-width: calc(50vw - 22vh - 24px);
 }
-.ready .hero-left { opacity: 1; transform: translate(0, -62%); }
+.hero-right {
+  left: calc(50% + max(25vh, 14vw));
+  transform: translate(20px, -58%);
+  text-align: left;
+  max-width: calc(50vw - max(25vh, 14vw) - 20px);
+}
+.ready .hero-left { opacity: 1; transform: translate(0, -60%); }
 .ready .hero-right { opacity: 1; transform: translate(0, -58%); }
 
 /* Frases manuscritas (saudação e subtítulo técnico) */
@@ -191,14 +195,14 @@ main { position: relative; z-index: 1; }
   line-height: 1.1;
   margin-bottom: 0.55rem;
 }
-.greet { font-size: clamp(1.4rem, 2.5vw, 2.6rem); }
+.greet { font-size: clamp(1.3rem, 2.3vw, 2.4rem); }
 .stack {
-  font-size: clamp(0.85rem, 1.3vw, 1.5rem);
+  font-size: clamp(0.85rem, 1.15vw, 1.35rem);
   white-space: nowrap;
   letter-spacing: 0.01em;
 }
 
-/* Nome: mesmo estilo do cargo (JOÃO maior, MESQUITA logo abaixo, ambos em negrito) */
+/* Nome: mesmo estilo do cargo (SAMIR maior, FIRMINO logo abaixo, ambos em negrito) */
 .name {
   font-family: "Archivo", sans-serif;
   font-weight: 800;
@@ -207,10 +211,10 @@ main { position: relative; z-index: 1; }
   text-transform: uppercase;
 }
 .name span { display: block; }
-.name-first { font-size: clamp(2.6rem, 4.7vw, 4.8rem); }
-.name-last { font-size: clamp(2.2rem, 3.85vw, 3.95rem); }
+.name-first { font-size: clamp(2.4rem, 4.2vw, 4.4rem); }
+.name-last { font-size: clamp(2.0rem, 3.5vw, 3.6rem); }
 
-/* Cargo: SOFTWARE maior que ENGINEER, ambos em negrito */
+/* Cargo: DATA maior que ANALYST, ambos em negrito */
 .role {
   font-family: "Archivo", sans-serif;
   font-weight: 800;
@@ -218,8 +222,8 @@ main { position: relative; z-index: 1; }
   letter-spacing: -0.035em;
 }
 .role span { display: block; }
-.role span:first-child { font-size: clamp(2.6rem, 4.7vw, 4.8rem); }
-.role span:last-child { font-size: clamp(2.2rem, 3.85vw, 3.95rem); }
+.role span:first-child { font-size: clamp(2.4rem, 4.2vw, 4.4rem); }
+.role span:last-child { font-size: clamp(2.0rem, 3.5vw, 3.6rem); }
 
 /* ---------- Redes ---------- */
 .socials {
