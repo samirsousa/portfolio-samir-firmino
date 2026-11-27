@@ -331,8 +331,8 @@ main { position: relative; z-index: 1; }
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-top: max(80px, calc(10vh + env(safe-area-inset-top)));
-    padding-bottom: max(32px, calc(6vh + env(safe-area-inset-bottom)));
+    padding-top: max(72px, calc(6vh + env(safe-area-inset-top)));
+    padding-bottom: max(24px, calc(3vh + env(safe-area-inset-bottom)));
     padding-left: 16px;
     padding-right: 16px;
     height: 100vh;
@@ -362,7 +362,7 @@ main { position: relative; z-index: 1; }
     margin-top: 0;
   }
   .hero-right {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.6rem;
   }
 
   .greet {

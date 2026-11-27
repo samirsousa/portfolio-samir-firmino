@@ -118,12 +118,15 @@ export async function loadGlbAvatar(cfg = MODEL_CONFIG) {
     root,
     headWorld: (out) => model.localToWorld(out.copy(headCenter)),
     frame(aspect, fov) {
+      const isMobile = aspect < 0.85;
       const bottom = cfg.showFrom * H, top = H * (1 + (cfg.headroom ?? 0.03));
       const half = Math.tan(THREE.MathUtils.degToRad(fov / 2));
       const fitH = ((top - bottom) / 2) / half * 1.05;
       const fitW = (size.x * s / 2) / (half * aspect) * 1.15;
       const lookY = (top + bottom) / 2;
-      return { camY: lookY + 0.08, lookY, dist: (Math.max(fitH, fitW) + pivot.z) * 1.28 };
+      const distMul = isMobile ? 1.72 : 1.28;
+      const camY = lookY + (isMobile ? 0.04 : 0.08);
+      return { camY, lookY, dist: (Math.max(fitH, fitW) + pivot.z) * distMul };
     },
     // Close-up de cabeça e ombros (seção "Sobre")
     close(aspect, fov) {
