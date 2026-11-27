@@ -22,7 +22,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { height: 100%; min-width: 1240px; }
+html, body { height: 100%; width: 100%; overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -170,7 +170,7 @@ main { position: relative; z-index: 1; }
   animation: hint 1.6s ease-in-out infinite;
 }
 @keyframes hint { 50% { transform: translateY(9px); opacity: 0.3; } }
-/* Blocos ancorados no centro da tela, um de cada lado do avatar 3D (Layout Desktop Oficial para todos os dispositivos) */
+/* Blocos ancorados no centro da tela (Layout Desktop padrão) */
 .hero-left {
   right: calc(50% + 185px);
   transform: translate(-15px, -58%);
@@ -236,6 +236,168 @@ main { position: relative; z-index: 1; }
 }
 .socials a { display: block; transition: color 0.2s, transform 0.2s; }
 .socials a:hover { color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- Menu Mobile Drawer (Hambúrguer) ---------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+  gap: 4px;
+  z-index: 25;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+.nav-toggle span {
+  display: block;
+  width: 17px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.25s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg-deep) 94%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(.2,.7,.2,1);
+}
+.mobile-nav.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+}
+.mobile-nav-links a {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color 0.2s, transform 0.2s;
+}
+.mobile-nav-links a:hover,
+.mobile-nav-links a:active {
+  color: var(--accent);
+  transform: scale(1.06);
+}
+
+/* =========================================================
+   RESPONSIVIDADE PREMIUM PARA MOBILE (iPhone 13, Galaxy, etc.)
+   ========================================================= */
+@media (max-width: 1180px) {
+  .mail { display: none; }
+  .nav { gap: 1.8rem; }
+  .logo { margin-right: auto; }
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    padding: max(0.8rem, env(safe-area-inset-top)) 1rem 0.8rem;
+    gap: 0.6rem;
+  }
+  .nav { display: none; }
+  .nav-toggle { display: flex; }
+  .lang { margin-left: auto; }
+  .socials { display: none; }
+
+  /* Hero no mobile: estrutura vertical perfeita, destacando o avatar no centro */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: max(80px, calc(10vh + env(safe-area-inset-top)));
+    padding-bottom: max(32px, calc(6vh + env(safe-area-inset-bottom)));
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 100vh;
+    height: 100dvh;
+  }
+  .hero-left,
+  .hero-right {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    text-align: center;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+  .ready .hero-left,
+  .ready .hero-right {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-left {
+    margin-top: 0;
+  }
+  .hero-right {
+    margin-bottom: 1.2rem;
+  }
+
+  .greet {
+    font-size: clamp(1.1rem, 3.8vw, 1.4rem);
+    margin-bottom: 0.2rem;
+  }
+  .name-first {
+    font-size: clamp(2.4rem, 8.5vw, 3.4rem);
+  }
+  .name-last {
+    font-size: clamp(2.0rem, 7.0vw, 2.8rem);
+  }
+
+  .stack {
+    font-size: clamp(0.85rem, 3.2vw, 1.15rem);
+    white-space: normal;
+    margin-bottom: 0.35rem;
+  }
+  .role span:first-child {
+    font-size: clamp(2.2rem, 8.0vw, 3.2rem);
+  }
+  .role span:last-child {
+    font-size: clamp(1.8rem, 6.5vw, 2.6rem);
+  }
+
+  .scroll-hint {
+    bottom: max(10px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar { padding: max(0.7rem, env(safe-area-inset-top)) 0.85rem 0.7rem; }
+  .logo { font-size: 1.25rem; }
+  .theme-toggle, .nav-toggle { width: 34px; height: 34px; }
+  .lang button { padding: 0.22rem 0.55rem; font-size: 0.65rem; }
+  .hero-right { margin-bottom: 0.8rem; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-left, .hero-right, #avatar { transition: none; }
