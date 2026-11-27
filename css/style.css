@@ -375,8 +375,8 @@ main { position: relative; z-index: 1; }
   }
 
   .stack {
-    font-size: clamp(0.85rem, 3.2vw, 1.15rem);
-    white-space: normal;
+    font-size: clamp(0.72rem, 3.2vw, 1.15rem);
+    white-space: nowrap;
     margin-bottom: 0.35rem;
   }
   .role span:first-child {

@@ -161,12 +161,59 @@ const pcards = [...track.children];
 const counter = document.querySelector('[data-counter]');
 document.querySelector('[data-total]').textContent = String(pcards.length).padStart(2, '0');
 let travel = 0;
+let currentCardIndex = 0;
+let isTouchControlling = false;
+
 function measureProjects() {
   travel = Math.max(0, track.scrollWidth - window.innerWidth);
   track.classList.toggle('fits', travel === 0);
-  projects.classList.toggle('fits', travel === 0); // sem carrossel: esconde contador e barra
-  projects.style.setProperty('--projects-h', `${window.innerHeight + travel}px`);
+  projects.classList.toggle('fits', travel === 0);
+  projects.style.setProperty('--projects-h', `${window.innerHeight + Math.max(travel, 400)}px`);
 }
+
+function updateProjectsToCard(idx) {
+  currentCardIndex = clamp(idx, 0, pcards.length - 1);
+  const cardW = pcards[0]?.offsetWidth || 300;
+  const gap = 16;
+  const targetX = Math.min(travel, currentCardIndex * (cardW + gap));
+  track.style.setProperty('--x', targetX.toFixed(1));
+  const pp = pcards.length > 1 ? currentCardIndex / (pcards.length - 1) : 0;
+  projects.style.setProperty('--p', pp.toFixed(3));
+  counter.textContent = String(currentCardIndex + 1).padStart(2, '0');
+}
+
+const btnPrev = document.querySelector('.pnav-prev');
+const btnNext = document.querySelector('.pnav-next');
+if (btnPrev && btnNext) {
+  btnPrev.addEventListener('click', (e) => {
+    e.preventDefault();
+    updateProjectsToCard(currentCardIndex - 1);
+  });
+  btnNext.addEventListener('click', (e) => {
+    e.preventDefault();
+    updateProjectsToCard(currentCardIndex + 1);
+  });
+}
+
+// Touch swipe direto com o dedo nos cards
+let touchStartX = 0, touchStartY = 0;
+track.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  isTouchControlling = true;
+}, { passive: true });
+
+track.addEventListener('touchend', (e) => {
+  const dx = touchStartX - e.changedTouches[0].clientX;
+  const dy = touchStartY - e.changedTouches[0].clientY;
+  if (Math.abs(dx) > 35 && Math.abs(dx) > Math.abs(dy)) {
+    if (dx > 0) updateProjectsToCard(currentCardIndex + 1);
+    else updateProjectsToCard(currentCardIndex - 1);
+  }
+  setTimeout(() => { isTouchControlling = false; }, 300);
+}, { passive: true });
+
+window.addEventListener('load', measureProjects);
 
 /* ---------- Menu: link da seção atual ---------- */
 const navLinks = [...document.querySelectorAll('.nav a')];
@@ -195,11 +242,14 @@ function onScroll() {
   jobs.forEach((j) => j.classList.toggle('active', j === best && bestDist < vh * 0.45));
 
   // Projetos
-  const pr = projects.getBoundingClientRect();
-  const pp = clamp(-pr.top / Math.max(1, pr.height - vh), 0, 1);
-  track.style.setProperty('--x', (pp * travel).toFixed(1));
-  projects.style.setProperty('--p', pp.toFixed(3));
-  counter.textContent = String(Math.min(pcards.length, Math.floor(pp * (pcards.length - 1) + 0.5) + 1)).padStart(2, '0');
+  if (!isTouchControlling) {
+    const pr = projects.getBoundingClientRect();
+    const pp = clamp(-pr.top / Math.max(1, pr.height - vh), 0, 1);
+    track.style.setProperty('--x', (pp * travel).toFixed(1));
+    projects.style.setProperty('--p', pp.toFixed(3));
+    currentCardIndex = Math.min(pcards.length - 1, Math.floor(pp * (pcards.length - 1) + 0.5));
+    counter.textContent = String(currentCardIndex + 1).padStart(2, '0');
+  }
 
   // Menu
   let current = -1;
