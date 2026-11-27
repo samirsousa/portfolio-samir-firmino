@@ -13,7 +13,7 @@
   </p>
 
   <p align="center">
-    <a href="https://samirsousa.github.io/portfolio/">🌐 <strong>Ver Demonstração Online</strong></a> •
+    <a href="https://samirsousa.github.io/portfolio-samir-firmino/">🌐 <strong>Ver Demonstração Online</strong></a> •
     <a href="#-principais-funcionalidades">Funcionalidades</a> •
     <a href="#-tecnologias">Tecnologias</a> •
     <a href="#-como-rodar-localmente">Como Rodar</a> •
@@ -117,21 +117,14 @@ npx serve .
 
 ## 🚀 Como Fazer o Deploy no GitHub Pages
 
-1. Crie um repositório no seu GitHub chamado `portfolio`.
-2. Envie os arquivos para o GitHub:
-   ```bash
-   git add .
-   git commit -m "feat: portfolio 3D Samir Firmino"
-   git branch -M main
-   git remote add origin https://github.com/samirsousa/portfolio.git
-   git push -u origin main
-   ```
-3. No repositório no GitHub:
-   - Vá em **Settings** > **Pages**.
-   - Em **Source**, selecione a branch `main` e a pasta `/(root)`.
-   - Clique em **Save**.
-4. Seu portfólio estará online no link:
-   **`https://samirsousa.github.io/portfolio/`**
+1. O repositório já está criado e configurado em: `samirsousa/portfolio-samir-firmino`.
+2. No repositório no GitHub:
+   - Vá em **Settings** > **Pages** (ou acesse direto: `https://github.com/samirsousa/portfolio-samir-firmino/settings/pages`).
+   - Em **Build and deployment** > **Branch**:
+     - Selecione a branch `main` e a pasta `/(root)`.
+     - Clique em **Save**.
+3. Em 1 a 2 minutos, o GitHub Pages compilará e o site estará online no link oficial:
+   **`https://samirsousa.github.io/portfolio-samir-firmino/`**
 
 ---
 

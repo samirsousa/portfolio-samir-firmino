@@ -50,7 +50,7 @@ export const I18N = {
     'duel.kicker': 'GitHub & Conexões', 'duel.sub': 'Código, colaboração e presença profissional.',
     'duel.liPeriod': 'Perfil profissional', 'duel.ttPeriod': 'Repositórios & código',
     'duel.liMetric': 'Conexões & Redes', 'duel.ttMetric': 'Projetos no GitHub',
-    'duel.note': 'GitHub: @samirsousa · Desenvolvedor de Software, Engenharia de Dados & IA.',
+    'duel.note': 'GitHub: @samirsousa · Data Analyst, Engenharia de Dados & IA.',
 
     'stack.title': 'Minhas Tecnologias', 'stack.sub': 'Stack & ferramentas',
     'stack.g1': 'Linguagens & Programação', 'stack.g2': 'Frameworks & Web', 'stack.g3': 'Bancos & Dados', 'stack.g4': 'Ferramentas & Métodos',
@@ -106,7 +106,7 @@ export const I18N = {
     'duel.kicker': 'GitHub & Network', 'duel.sub': 'Code, collaboration, and professional presence.',
     'duel.liPeriod': 'Professional profile', 'duel.ttPeriod': 'Repositories & code',
     'duel.liMetric': 'Network & Connections', 'duel.ttMetric': 'GitHub Projects',
-    'duel.note': 'GitHub: @samirsousa · Software Developer, Data Engineering & AI.',
+    'duel.note': 'GitHub: @samirsousa · Data Analyst, Data Engineering & AI.',
 
     'stack.title': 'My Tech Stack', 'stack.sub': 'Stack & tools',
     'stack.g1': 'Languages & Core', 'stack.g2': 'Frameworks & Web', 'stack.g3': 'Databases & Data', 'stack.g4': 'Tools & Methods',
@@ -162,7 +162,7 @@ export const I18N = {
     'duel.kicker': 'GitHub y Redes', 'duel.sub': 'Código, colaboración y presencia profesional.',
     'duel.liPeriod': 'Perfil profesional', 'duel.ttPeriod': 'Repositorios y código',
     'duel.liMetric': 'Red y Conexiones', 'duel.ttMetric': 'Proyectos en GitHub',
-    'duel.note': 'GitHub: @samirsousa · Desarrollador de Software, Ingeniería de Datos e IA.',
+    'duel.note': 'GitHub: @samirsousa · Data Analyst, Ingeniería de Datos e IA.',
 
     'stack.title': 'Mis Tecnologías', 'stack.sub': 'Stack y herramientas',
     'stack.g1': 'Lenguajes y Core', 'stack.g2': 'Frameworks y Web', 'stack.g3': 'Bases de datos y Datos', 'stack.g4': 'Herramientas y Métodos',
