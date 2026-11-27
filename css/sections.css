@@ -50,7 +50,8 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
 }
-.word { opacity: 1; }
+.word { opacity: 0.12; transition: opacity 0.35s ease; }
+.word.lit { opacity: 1; }
 
 /* ---------- O que eu faço ---------- */
 .services {
@@ -183,13 +184,13 @@
 }
 .job {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 0.15fr 1.4fr;
+  grid-template-columns: 140px minmax(260px, 1.1fr) 1.6fr;
   gap: 1.5rem;
   align-items: start;
   padding: 2.4rem 0;
-  opacity: 1;
-  filter: none;
-  transition: opacity 0.3s ease;
+  opacity: 0.28;
+  filter: blur(0.6px);
+  transition: opacity 0.5s ease, filter 0.5s ease;
 }
 .job.active { opacity: 1; filter: none; }
 .job-role h3 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: clamp(1.2rem, 1.8vw, 1.6rem); letter-spacing: -0.02em; line-height: 1.1; }
@@ -543,10 +544,17 @@ a.duel-stat:hover .ds-name { color: var(--accent); }
 .lang-curtain.enter span { transform: none; opacity: 1; transition: transform 0.5s ease 0.15s, opacity 0.4s ease 0.15s; }
 .lang-curtain.leave { clip-path: inset(0 0 100% 0); transition: clip-path 0.55s cubic-bezier(.76,0,.24,1); }
 
+/* ---------- Responsivo ---------- */
+@media (max-width: 1100px) {
+  .services { grid-template-columns: 1fr 1fr; }
+  .mix-title { grid-column: 1 / -1; }
+  .desk-stage { height: 60vh; }
+}
+
 /* =========================================================
    RESPONSIVIDADE PREMIUM PARA MOBILE (iPhone 13, Galaxy, etc.)
    ========================================================= */
-@media (max-width: 900px) {
+@media (max-width: 860px) {
   .about-sticky {
     grid-template-columns: 1fr;
     align-items: end;
@@ -565,6 +573,9 @@ a.duel-stat:hover .ds-name { color: var(--accent); }
     font-size: clamp(1.05rem, 3.8vw, 1.25rem);
     line-height: 1.55;
   }
+  /* No mobile, todas as palavras do "Sobre mim" ficam 100% nítidas */
+  .word { opacity: 1 !important; }
+  .about-text .brand.word { opacity: 1 !important; }
 
   .services {
     grid-template-columns: 1fr;
@@ -608,6 +619,8 @@ a.duel-stat:hover .ds-name { color: var(--accent); }
     gap: 0.35rem;
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
+    opacity: 1 !important;
+    filter: none !important;
   }
   .job-role h3 {
     font-size: 1.25rem;
@@ -741,8 +754,9 @@ a.duel-stat:hover .ds-name { color: var(--accent); }
 /* Nos nomes de empresa da carreira o selo fica menor e sem itálico */
 .job-org .brand { font-family: "Outfit", sans-serif; font-style: normal; font-size: 0.82rem; }
 .job-org { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-/* No "Sobre mim" o selo é nítido e destacado */
-.about-text .brand.word { opacity: 1; }
+/* No "Sobre mim" o selo também acende/apaga junto com as palavras */
+.about-text .brand.word { opacity: 0.18; }
+.about-text .brand.word.lit { opacity: 1; }
 .hl { color: var(--accent); font-weight: 700; }
 
 /* ---------- Créditos discretos (abre ao clicar) ---------- */

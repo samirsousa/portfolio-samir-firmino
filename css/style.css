@@ -22,7 +22,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { height: 100%; width: 100%; overflow-x: hidden; }
+html, body { height: 100%; }
 
 body {
   background: var(--bg);
@@ -170,19 +170,20 @@ main { position: relative; z-index: 1; }
   animation: hint 1.6s ease-in-out infinite;
 }
 @keyframes hint { 50% { transform: translateY(9px); opacity: 0.3; } }
-/* Blocos ancorados no centro da tela (Layout Desktop padrão) */
+/* Blocos ancorados no centro da tela, um de cada lado do avatar 3D.
+   Usa max(34vh, 21vw) para afastar bem as frases dos braços e ombros do boneco. */
 .hero-left {
-  right: calc(50% + 185px);
-  transform: translate(-15px, -58%);
+  right: calc(50% + max(34vh, 21vw));
+  transform: translate(-20px, -60%);
   text-align: left;
 }
 .hero-right {
-  left: calc(50% + 185px);
-  transform: translate(15px, -58%);
+  left: calc(50% + max(34vh, 21vw));
+  transform: translate(20px, -58%);
   text-align: left;
-  max-width: 480px;
+  max-width: calc(50vw - max(34vh, 21vw) - 16px);
 }
-.ready .hero-left { opacity: 1; transform: translate(0, -58%); }
+.ready .hero-left { opacity: 1; transform: translate(0, -60%); }
 .ready .hero-right { opacity: 1; transform: translate(0, -58%); }
 
 /* Frases manuscritas (saudação e subtítulo técnico) */
@@ -194,9 +195,9 @@ main { position: relative; z-index: 1; }
   line-height: 1.1;
   margin-bottom: 0.55rem;
 }
-.greet { font-size: 1.7rem; }
+.greet { font-size: clamp(1.2rem, 2.0vw, 2.2rem); }
 .stack {
-  font-size: 1.15rem;
+  font-size: clamp(0.8rem, 1.05vw, 1.25rem);
   white-space: nowrap;
   letter-spacing: 0.01em;
 }
@@ -210,8 +211,8 @@ main { position: relative; z-index: 1; }
   text-transform: uppercase;
 }
 .name span { display: block; }
-.name-first { font-size: 3.8rem; }
-.name-last { font-size: 3.1rem; }
+.name-first { font-size: clamp(2.2rem, 3.8vw, 4.0rem); }
+.name-last { font-size: clamp(1.9rem, 3.2vw, 3.4rem); }
 
 /* Cargo: DATA maior que ANALYST, ambos em negrito */
 .role {
@@ -221,8 +222,8 @@ main { position: relative; z-index: 1; }
   letter-spacing: -0.035em;
 }
 .role span { display: block; }
-.role span:first-child { font-size: 3.8rem; }
-.role span:last-child { font-size: 3.1rem; }
+.role span:first-child { font-size: clamp(2.2rem, 3.8vw, 4.0rem); }
+.role span:last-child { font-size: clamp(1.9rem, 3.2vw, 3.4rem); }
 
 /* ---------- Redes ---------- */
 .socials {
@@ -304,16 +305,17 @@ main { position: relative; z-index: 1; }
   transform: scale(1.06);
 }
 
-/* =========================================================
-   RESPONSIVIDADE PREMIUM PARA MOBILE (iPhone 13, Galaxy, etc.)
-   ========================================================= */
+/* ---------- Responsivo ---------- */
 @media (max-width: 1180px) {
   .mail { display: none; }
-  .nav { gap: 1.8rem; }
+  .nav { gap: 1.6rem; }
   .logo { margin-right: auto; }
 }
 
-@media (max-width: 900px) {
+/* =========================================================
+   RESPONSIVIDADE PREMIUM PARA MOBILE (iPhone 13, Galaxy, etc.)
+   ========================================================= */
+@media (max-width: 860px) {
   .topbar {
     padding: max(0.8rem, env(safe-area-inset-top)) 1rem 0.8rem;
     gap: 0.6rem;
