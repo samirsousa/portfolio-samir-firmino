@@ -252,24 +252,6 @@ document.addEventListener('click', (e) => {
   history.replaceState(null, '', hash);
 });
 
-/* ---------- Menu Mobile Drawer (Hambúrguer) ---------- */
-const navToggle = document.querySelector('.nav-toggle');
-const mobileNav = document.getElementById('mobileNav');
-if (navToggle && mobileNav) {
-  const toggleMobileNav = (forceState) => {
-    const isOpen = typeof forceState === 'boolean' ? forceState : !mobileNav.classList.contains('open');
-    navToggle.classList.toggle('open', isOpen);
-    mobileNav.classList.toggle('open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    mobileNav.setAttribute('aria-hidden', String(!isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  };
-  navToggle.addEventListener('click', () => toggleMobileNav());
-  mobileNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => toggleMobileNav(false));
-  });
-}
-
 measureProjects();
 window.addEventListener('scroll', onScroll, { passive: true });
 window.addEventListener('resize', () => { measureProjects(); onScroll(); });
