@@ -123,7 +123,7 @@ export async function loadGlbAvatar(cfg = MODEL_CONFIG) {
       const fitH = ((top - bottom) / 2) / half * 1.05;
       const fitW = (size.x * s / 2) / (half * aspect) * 1.15;
       const lookY = (top + bottom) / 2;
-      return { camY: lookY + 0.08, lookY, dist: (Math.max(fitH, fitW) + pivot.z) * 1.20 };
+      return { camY: lookY + 0.08, lookY, dist: (Math.max(fitH, fitW) + pivot.z) * 1.28 };
     },
     // Close-up de cabeça e ombros (seção "Sobre")
     close(aspect, fov) {

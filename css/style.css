@@ -171,17 +171,17 @@ main { position: relative; z-index: 1; }
 }
 @keyframes hint { 50% { transform: translateY(9px); opacity: 0.3; } }
 /* Blocos ancorados no centro da tela, um de cada lado do avatar 3D.
-   Usa max(25vh, 14vw) para manter um vão seguro e proporcional ao avatar em qualquer resolução. */
+   Usa max(34vh, 21vw) para afastar bem as frases dos braços e ombros do boneco. */
 .hero-left {
-  right: calc(50% + max(25vh, 14vw));
+  right: calc(50% + max(34vh, 21vw));
   transform: translate(-20px, -60%);
   text-align: left;
 }
 .hero-right {
-  left: calc(50% + max(25vh, 14vw));
+  left: calc(50% + max(34vh, 21vw));
   transform: translate(20px, -58%);
   text-align: left;
-  max-width: calc(50vw - max(25vh, 14vw) - 20px);
+  max-width: calc(50vw - max(34vh, 21vw) - 16px);
 }
 .ready .hero-left { opacity: 1; transform: translate(0, -60%); }
 .ready .hero-right { opacity: 1; transform: translate(0, -58%); }
@@ -195,9 +195,9 @@ main { position: relative; z-index: 1; }
   line-height: 1.1;
   margin-bottom: 0.55rem;
 }
-.greet { font-size: clamp(1.3rem, 2.3vw, 2.4rem); }
+.greet { font-size: clamp(1.2rem, 2.0vw, 2.2rem); }
 .stack {
-  font-size: clamp(0.85rem, 1.15vw, 1.35rem);
+  font-size: clamp(0.8rem, 1.05vw, 1.25rem);
   white-space: nowrap;
   letter-spacing: 0.01em;
 }
@@ -211,8 +211,8 @@ main { position: relative; z-index: 1; }
   text-transform: uppercase;
 }
 .name span { display: block; }
-.name-first { font-size: clamp(2.4rem, 4.2vw, 4.4rem); }
-.name-last { font-size: clamp(2.0rem, 3.5vw, 3.6rem); }
+.name-first { font-size: clamp(2.2rem, 3.8vw, 4.0rem); }
+.name-last { font-size: clamp(1.9rem, 3.2vw, 3.4rem); }
 
 /* Cargo: DATA maior que ANALYST, ambos em negrito */
 .role {
@@ -222,8 +222,8 @@ main { position: relative; z-index: 1; }
   letter-spacing: -0.035em;
 }
 .role span { display: block; }
-.role span:first-child { font-size: clamp(2.4rem, 4.2vw, 4.4rem); }
-.role span:last-child { font-size: clamp(2.0rem, 3.5vw, 3.6rem); }
+.role span:first-child { font-size: clamp(2.2rem, 3.8vw, 4.0rem); }
+.role span:last-child { font-size: clamp(1.9rem, 3.2vw, 3.4rem); }
 
 /* ---------- Redes ---------- */
 .socials {
