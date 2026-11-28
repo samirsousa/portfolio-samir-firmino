@@ -15,7 +15,6 @@
   <p align="center">
     <a href="https://samirsousa.github.io/portfolio-samir-firmino/">🌐 <strong>Ver Demonstração Online</strong></a> •
     <a href="#-principais-funcionalidades">Funcionalidades</a> •
-    <a href="#-tecnologias-utilizadas">Tecnologias</a> •
     <a href="#-como-rodar-localmente">Como Rodar</a> •
     <a href="#-contato">Contato</a>
   </p>
